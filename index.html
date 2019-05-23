@@ -25,10 +25,11 @@
     <script type ="text/javascript">
     // Variables possible for the game
     var computerChoice = ["lil", "durk", "asap", "blondie", "fergi"];
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];   
     
     var correctGuess = [];
-    var guessIndex =[];
-    var incorrectGuess
+    var wordChoice =[];
+    var incorrectGuess=[];
     // we start the game with a score of
     var wins = 0;
     var loss = 0;
@@ -36,49 +37,76 @@
     var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 
 
+        // getting the element Id and placing in a new variable which we will pass to .innerHTML
+        var win =  document.getElementById("wins");
+        var correct = document.getElementById("correctGuess");
+        var left = document.getElementById("guessesLeft");
+        var record = document.getElementById("guessIndex");
+        var losses = document.getElementById("loss");
+
+        //
+   function createWord(){
+            for(i =0;i<computerGuess.length; i++){
+                wordChoice.push("_");
+            }
+            correct.innerHTML=wordChoice.join(' ');
+        }
+        // Function below resets game
+        function resetGame(){
+        correctGuess=[];
+        incorrectGuess=[];
+        guessIndex=[];
+        guessesLeft=12;
+        computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+        createWord();
+        }
+
+     
+     createWord();
+
     // on a key press the below function takes the key and adds it to guess array 
     document.onkeypress = function(event){ 
 
-        var guessIndex = event.key
+
+        var userGuess = event.key
+        if(alphabet.includes(userGuess)){
 
         
-        // getting the element Id and placing in a new variable which we will pass to .innerHTML
-        var down = document.getElementById("loss")
-        var past = document.getElementById("guessesLeft");
-        var record = document.getElementById("guessIndex");
-        var point =  document.getElementById("wins");
 
-        past.innerHTML = guessesLeft
-        guessIndex.push(record);
-        incorrectGuess.innerHTML = "guessIndex"
-    
 
-        function resetGame(){
-            correctGuess=[];
-        guessIndex=[];
-        guessesLeft=12;
+        if(computerGuess.includes(userGuess)){
+            
+            correctGuess.push(userGuess)
+            correct.innerHTML = correctGuess;
+        }else{
+            incorrectGuess.push(userGuess)
+            guessesLeft--
+            record.innerHTML = incorrectGuess;
         }
 
-        if (computerChoice === correctGuess){
+
+        if (computerChoice===correctGuess){
             wins++
             resetGame();
-            point.innerHTML = wins;
-            console.log(wins);
+            win.innerHTML = "<h2>" + wins + "</h2>";
         }
 
-        else if (guessesLeft === 0){
+        else if(guessesLeft===0){
             loss++
             resetGame();
-            down.innerHTML = loss;
-            console.log(loss);
+            losses.innerHTML = loss;
         }
         else {
-            guessesLeft--
-        past.innerHTML = guessesLeft;
-
+            // guessesLeft--
+        left.innerHTML = guessesLeft;
         }
-
- console.log(correctGuess)
+    console.log(wins);
+ console.log(userGuess);
+ console.log(incorrectGuess);
+ console.log(computerGuess);
+ console.log(loss);
+       
+        }
 
 
     }
