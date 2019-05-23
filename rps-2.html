@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+  
+  <div id="game">
+
+  </div>
+    <h2>You Choice (R,P,or S)<span id="userGuess"></span></h2>
+    <h2> Computer Choice<span id="computerGuess"></span></h2>
+    <h3>Wins =<span id="wins"></span></h3>
+    <h3>Losses =<span id="losses"></span></h3>
+    <h3>Ties =<span id="ties"></span></h3>
+   
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s"];
+
+      var wins = 0;
+      var losses = 0;
+      var ties = 0;
+
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      //var 
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  
+
+      // Alerts the key the user pressed (userGuess).
+      alert("User guess: " + userGuess);
+
+      // Alerts the Computer's guess.
+      alert("Computer guess: " + computerGuess);
+
+      
+    
+      
+      if (computerGuess ==="r" && userGuess === "p"){
+        alert ("You win");
+        wins++;
+      }
+      else if (computerGuess ==="r" && userGuess === "s"){
+        alert ("You lose");
+        losses++;
+      }
+      else if (computerGuess ==="p" && userGuess === "r"){
+        alert ("You lose");
+        losses++;
+      }
+      else if (computerGuess ==="p" && userGuess === "s"){
+        alert ("You win");
+        wins++;
+      }
+      else if (computerGuess ==="s" && userGuess === "p"){
+        alert ("You lose");
+        losses++;
+      }
+      else if (computerGuess ==="s" && userGuess === "r"){
+        alert ("You win");
+        wins++;
+      }
+      else if (computerGuess===userGuess){
+        alert("this is a tie");
+        ties++;
+      }
+      console.log("wins",wins)
+      console.log("losses",losses)
+
+
+
+
+
+      // else if (computerChoices < 0.67) {
+      //   computerChoices = "Paper";
+      // }
+      // else{
+      //   computerChoices = "Scissors";
+      // }
+
+
+    };
+
+     
+
+    //  var userGuess= prompt("Do you choose Rock, Paper or Scissors");
+
+
+     
+
+      
+
+    
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+body{
+    /* background-image: url(https://i.ytimg.com/vi/Cxw2FVRj69o/hqdefault.jpg); */
+    position: relative
+    
+}
+h1{
+    color: slateblue;
+}
+h2{
+    color: slateblue;;
+}
+p{
+    color:slateblue;
+}
+.container{
+    margin: 0 auto;
+    width: 500px;
+    height: 300px;
+    font-size: 24px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    
+
+
+    <title>Word Guess Game </title>
+</head>
+<body>
+    <div class="container">
+        <h2>Press any key to start! Guess the Band!</h2>
+        <p>Wins</p><span id="wins"></span>
+        <p>Current Word</p><span id="correctGuess"></span>
+        <p>Guesses Remaining</p><span id="guessesLeft"></span>
+        <p>Guessed Already</p><span id="guessIndex"></span>
+        <p>Loss</p><span id="loss"></span>
+    </div>
+
+    <script type ="text/javascript">
+    // Variables possible for the game
+    var computerChoice = ["lil", "durk", "asap", "blondie", "fergi"];
+    
+    var correctGuess = [];
+    var guessIndex =[];
+    var incorrectGuess
+    // we start the game with a score of
+    var wins = 0;
+    var loss = 0;
+    var guessesLeft = 12;
+    var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+
+
+    // on a key press the below function takes the key and adds it to guess array 
+    document.onkeypress = function(event){ 
+
+        var guessIndex = event.key
+
+        
+        // getting the element Id and placing in a new variable which we will pass to .innerHTML
+        var down = document.getElementById("loss")
+        var past = document.getElementById("guessesLeft");
+        var record = document.getElementById("guessIndex");
+        var point =  document.getElementById("wins");
+
+        past.innerHTML = guessesLeft
+        guessIndex.push(record);
+        incorrectGuess.innerHTML = "guessIndex"
+    
+
+        function resetGame(){
+            correctGuess=[];
+        guessIndex=[];
+        guessesLeft=12;
+        }
+
+        if (computerChoice === correctGuess){
+            wins++
+            resetGame();
+            point.innerHTML = wins;
+            console.log(wins);
+        }
+
+        else if (guessesLeft === 0){
+            loss++
+            resetGame();
+            down.innerHTML = loss;
+            console.log(loss);
+        }
+        else {
+            guessesLeft--
+        past.innerHTML = guessesLeft;
+
+        }
+
+ console.log(correctGuess)
+
+
+    }
+    
+    
+    </script>
+
+
+    
+</body>
+</html>
